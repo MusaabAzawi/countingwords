@@ -2,6 +2,8 @@ import java.util.*;
 
 public class WordFrequencyAnalyzerImp {
 
+    private String word;
+
     protected String calculateHighestFrequency(String text) {
         String[] words = text.toLowerCase().split(" ");
         Map<String, Integer> map = new HashMap<>();
@@ -27,11 +29,23 @@ public class WordFrequencyAnalyzerImp {
 
         // return Integer.parseInt(map.toString());
     }
-    private int calculateFrequency(String text,String word) {
-        return 0;
+    protected int calculateFrequencyForWord(String text,String word) {
+
+        String[] words = text.toLowerCase().split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        for (String w : words) {
+           map.put(w, map.getOrDefault(w, 0) + 1);
+        }
+        return map.getOrDefault(word, 0);
     }
 
-    private List<WordFrequencyImp> calculateMostFrequentNWords(String text, int in) {
+    private List<WordFrequencyImp> calculateMostFrequentNWords(String text, int n) {
+
+//        String[] words = text.toLowerCase().split(" ");
+//        Map<String, Integer> map = new HashMap<>();
+//        for (String item : words {
+//            map.put(words[i], map.getOrDefault(words[i], 0) + 1);
+//        }
         return null;
     }
 }
