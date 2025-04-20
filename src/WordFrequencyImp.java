@@ -1,9 +1,16 @@
 public class WordFrequencyImp {
+    private final String word;
+    private final int frequency;
 
-    private String getWord() {
-        return "";
+    public WordFrequencyImp(String word, int frequency) {
+        this.word = word;
+        this.frequency = frequency;
+    }
+
+    String getWord() {
+        return word;
     };
-    private int getFrequency() {
-        return 0;
+    int getFrequency() {
+        return frequency;
     };
 }

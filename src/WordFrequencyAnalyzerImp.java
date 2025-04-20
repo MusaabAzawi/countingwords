@@ -1,11 +1,10 @@
 import java.util.*;
 
 public class WordFrequencyAnalyzerImp {
-
-    private String word;
+    String regex = "([A-Za-z]+)|([^A-Za-z]+)";
 
     protected String calculateHighestFrequency(String text) {
-        String[] words = text.toLowerCase().split(" ");
+        String[] words = text.toLowerCase().split(regex);
         Map<String, Integer> map = new HashMap<>();
 
         for (String word : words) {
@@ -31,7 +30,7 @@ public class WordFrequencyAnalyzerImp {
     }
     protected int calculateFrequencyForWord(String text,String word) {
 
-        String[] words = text.toLowerCase().split(" ");
+        String[] words = text.toLowerCase().split(regex);
         Map<String, Integer> map = new HashMap<>();
         for (String w : words) {
            map.put(w, map.getOrDefault(w, 0) + 1);
@@ -39,13 +38,17 @@ public class WordFrequencyAnalyzerImp {
         return map.getOrDefault(word, 0);
     }
 
-    private List<WordFrequencyImp> calculateMostFrequentNWords(String text, int n) {
+    protected List<WordFrequencyImp> calculateMostFrequentNWords(String text, int n) {
 
-//        String[] words = text.toLowerCase().split(" ");
-//        Map<String, Integer> map = new HashMap<>();
-//        for (String item : words {
-//            map.put(words[i], map.getOrDefault(words[i], 0) + 1);
-//        }
-        return null;
+        String[] words = text.toLowerCase().split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+        List<WordFrequencyImp> wordFrequencyList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            wordFrequencyList.add(new WordFrequencyImp(entry.getKey(), entry.getValue()));
+        }
+        return wordFrequencyList.subList(0, Math.min(n, wordFrequencyList.size()));
     }
 }
